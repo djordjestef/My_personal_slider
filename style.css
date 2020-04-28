@@ -33,7 +33,7 @@ body {
 ul li {
     display: inline;
     margin-right: 10px;
-    color: azure;
+    color: orangered;
     font-weight: bold;
     cursor: pointer;
     cursor: pointer;
@@ -46,7 +46,7 @@ ul li:hover {
 }
 
 ul li.active {
-    background-color: orangered;
+    background-color: black;
 }
 
 ul li.dot {

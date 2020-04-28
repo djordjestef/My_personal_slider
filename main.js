@@ -45,8 +45,10 @@
                 dotsText = this.find('.slider_content').find('.slide_' + (i + 1)).attr('dot-name');
                 dotClass = '';
             }
+
             dots += '<li class= "' + dotClass + ' dot_' + (i + 1) + '" data-id="' + (i + 1) + '">' + dotsText + '</li>';
         }
+        
         dots += '</ul>';
         this.find('.dots_content').html(dots);
 
@@ -60,7 +62,6 @@
             this.find('.a_right').html(arrow_right);
 
             this.find('.a_left').find('a').click(function () {
-
                 var active_slide = $(this).parent().parent().find('.dots_content').find('li.active').attr('data-id');
                 var total_slides = $(this).parent().parent().find('.dots_content').find('li').length;
                 console.log(active_slide);
@@ -117,11 +118,9 @@
 
         this.find('.dots_content').find('li:first').addClass('active');
         this.find('.slider_content').find('.slides:first').css('left', '0');
-
     }
 
 }(jQuery));
-
 
 $(document).ready(function () {
     var slider_settings = {

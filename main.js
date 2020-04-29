@@ -2,6 +2,8 @@
 
     $.fn.my_personal_slider = function (options) {
 
+        var parent = $(this).parent().parent();
+
         var default_settings = {
             dotsPosition: 'inside',
             dotsText: false,
@@ -62,44 +64,44 @@
             this.find('.a_right').html(arrow_right);
 
             this.find('.a_left').find('a').click(function () {
-                var active_slide = $(this).parent().parent().find('.dots_content').find('li.active').attr('data-id');
-                var total_slides = $(this).parent().parent().find('.dots_content').find('li').length;
+                var active_slide = parent.find('.dots_content').find('li.active').attr('data-id');
+                var total_slides = parent.find('.dots_content').find('li').length;
                 console.log(active_slide);
                 console.log(total_slides);
 
                 if (active_slide == 1) {
-                    $(this).parent().parent().find('.dots_content').find('li.active').removeClass('active');
-                    $(this).parent().parent().find('.dots_content').find('li:last-of-type').addClass('active');
-                    $(this).parent().parent().find('.slider_content').find('.slides:last-of-type').addClass('higher_z').animate({ left: '0' }, 1200);
+                    parent.find('.dots_content').find('li.active').removeClass('active');
+                    parent.find('.dots_content').find('li:last-of-type').addClass('active');
+                    parent.find('.slider_content').find('.slides:last-of-type').addClass('higher_z').animate({ left: '0' }, 1200);
                 }
 
                 else {
-                    $(this).parent().parent().find('.dots_content').find('li.active').removeClass('active').prev().addClass('active');
-                    $(this).parent().parent().find('.slider_content').find('.slides:not(.slide_' + active_slide + ')').removeClass('higher_z').addClass('lower_z');
-                    $(this).parent().parent().find('.slider_content').find('.slides:not(.slide_' + active_slide + ')').css({ 'left': 'auto', 'right': '-100%' });
-                    $(this).parent().parent().find('.slider_content').find('.slide_' + active_slide).removeClass('higher_z').prev().addClass('higher_z').animate({ right: '0' }, 1200)
+                    parent.find('.dots_content').find('li.active').removeClass('active').prev().addClass('active');
+                    parent.find('.slider_content').find('.slides:not(.slide_' + active_slide + ')').removeClass('higher_z').addClass('lower_z');
+                    parent.find('.slider_content').find('.slides:not(.slide_' + active_slide + ')').css({ 'left': 'auto','right':'-100%' });
+                    parent.find('.slider_content').find('.slide_' + active_slide).removeClass('higher_z').prev().addClass('higher_z').animate({ right: '0' }, 1200);                      
                 }
             })
 
             this.find('.a_right').find('a').click(function () {
-                var active_slide = $(this).parent().parent().find('.dots_content').find('li.active').attr('data-id');
-                var total_slides = $(this).parent().parent().find('.dots_content').find('li').length;
+                var active_slide = parent.find('.dots_content').find('li.active').attr('data-id');
+                var total_slides = parent.find('.dots_content').find('li').length;
                 console.log(active_slide);
                 console.log(total_slides);
 
                 if (active_slide == total_slides) {
-                    $(this).parent().parent().find('.dots_content').find('li.active').removeClass('active');
-                    $(this).parent().parent().find('.dots_content').find('li:first-of-type').addClass('active');
-                    $(this).parent().parent().find('.slider_content').find('.slides:last-of-type').removeClass('higher_z');
-                    $(this).parent().parent().find('.slider_content').find('.slides:last-of-type').prev().removeAttr('style');
-                    $(this).parent().parent().find('.slider_content').find('.slide_1').addClass('higher_z').animate({ left: '0' }, 1200);
+                    parent.find('.dots_content').find('li.active').removeClass('active');
+                    parent.find('.dots_content').find('li:first-of-type').addClass('active');
+                    parent.find('.slider_content').find('.slides:last-of-type').removeClass('higher_z');
+                    parent.find('.slider_content').find('.slides:last-of-type').prev().removeAttr('style');
+                    parent.find('.slider_content').find('.slide_1').addClass('higher_z').animate({ left: '0' }, 1200);
                 }
 
                 else {
-                    $(this).parent().parent().find('.dots_content').find('li.active').removeClass('active').next().addClass('active');
-                    $(this).parent().parent().find('.slider_content').find('.slides:not(.slide_' + active_slide + ')').removeClass('higher_z').addClass('lower_z');
-                    $(this).parent().parent().find('.slider_content').find('.slides:not(.slide_' + active_slide + ')').removeAttr('style');
-                    $(this).parent().parent().find('.slider_content').find('.slide_' + active_slide).removeClass('higher_z').next().addClass('higher_z').animate({ left: '0' }, 1200)
+                    parent.find('.dots_content').find('li.active').removeClass('active').next().addClass('active');
+                    parent.find('.slider_content').find('.slides:not(.slide_' + active_slide + ')').removeClass('higher_z').addClass('lower_z');
+                    parent.find('.slider_content').find('.slides:not(.slide_' + active_slide + ')').removeAttr('style');
+                    parent.find('.slider_content').find('.slide_' + active_slide).removeClass('higher_z').next().addClass('higher_z').animate({ left: '0' }, 1200)
                 }
             })
         }
@@ -110,9 +112,9 @@
             $('li.active:not(.dot_' + id + ')').removeClass('active')
             $(this).addClass('active');
 
-            $(this).parent().parent().parent().find('.slider_content').find('.slides:not(.slide_' + id + ')').removeClass('higher_z').addClass('lower_z');
-            $(this).parent().parent().parent().find('.slider_content').find('.slide_' + id).addClass('higher_z').animate({ left: 0 }, 1200, function () {
-                $(this).parent().parent().parent().find('.slider_content').find('.slides:not(.slide_' + id + ')').removeAttr('style');
+            parent.parent().find('.slider_content').find('.slides:not(.slide_' + id + ')').removeClass('higher_z').addClass('lower_z');
+            parent.parent().find('.slider_content').find('.slide_' + id).addClass('higher_z').animate({ left: 0 }, 1200, function () {
+                parent.parent().find('.slider_content').find('.slides:not(.slide_' + id + ')').removeAttr('style');
             });
         })
 

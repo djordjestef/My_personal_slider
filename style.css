@@ -20,6 +20,9 @@ body {
 
 .slider_content {
     position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 80vh;
 }
 
 .lower_z{
